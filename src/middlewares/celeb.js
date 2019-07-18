@@ -78,7 +78,10 @@ module.exports = {
       title: Joi.string().min(2).required(),
       description: Joi.string().required(),
       dateLimit: Joi.string().required()
-    })
+    }),
+    params: {
+      id: Joi.string().required()
+    }
   }),
   //deletar uma tarefa
   celebDeleteTask: celebrate ({

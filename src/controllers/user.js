@@ -51,19 +51,6 @@ module.exports = app =>{
           })
         })
       })
-    },
-    // verificação do token
-    verificar: (req, res) => {
-      if(!req.headers.authorization) {
-        res.status(404).send('Usuario não encontrado.')
-      }
-      jwt.verify(req.headers.authorization, df.KEY, function(err, decoded){
-        if (err) {
-          res.status(500).send(err)
-          return
-        }
-        res.status(200).send(decoded)
-      })
     }
   }
 }
