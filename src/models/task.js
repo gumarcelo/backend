@@ -60,7 +60,7 @@ module.exports = app => {
           res.status(404).send('id inválido')
           return
         }
-        res.status(200).send(data)
+        res.json(user.tasks)
       })
     },
     delete: (req, res, data) => {

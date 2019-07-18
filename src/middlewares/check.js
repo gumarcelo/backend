@@ -11,8 +11,7 @@ const verifyToken = (req, res, next) => {
       res.status(401).send('Token Inválido')
       return
     }
-    res.locals.userId = data.id
-    next()
+    next(data)
   })
 }
 export default verifyToken
