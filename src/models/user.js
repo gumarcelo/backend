@@ -53,6 +53,10 @@ module.exports = app => {
           cb(true, 404)
           return
         }
+        if(data === null) {
+          cb(true, 404)
+          return
+        }
         cb(false, data)
       })
     }

@@ -32,19 +32,21 @@ module.exports = app =>{
       }
     },
     delete: (req, res) => { app.src.models.user.delete(req, res) },
-    login: (req, res) => { app.src.models.user.login(req, (e, cb) => {
+    login: (req, res) => {
+      app.src.models.user.login(req, (e, cb) => {
         if (e) {
-          console.log(e)
+          res.status(404).send('User or password NOT FOUND')
           return
         }
-        console.log(cb)
         bcrypt.compare(req.body.password, cb.password, function(err, result) {
           if (err) {
+            res.status(400).send('user controller bcrypt')
             return
           }
           jwt.sign({ id: cb._id }, df.KEY, (err, token) => { //1param: payload, 2º chave criada, função para validar erro ou devolver a resposta pro usuario
             if (err) {
               console.log(err)
+              res.status(400).send('user controller jwt')
               return
             }
             res.json({token: token})
