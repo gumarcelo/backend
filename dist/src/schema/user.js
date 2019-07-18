@@ -38,7 +38,7 @@ var User = new _mongoose2.default.Schema({
         title: {
             type: String
         },
-        desc: {
+        description: {
             type: String
         },
         status: {

@@ -29,7 +29,7 @@ const User = new mongoose.Schema({
             title: {
                 type: String
             },
-            desc: {
+            description: {
                 type: String
             },
             status: {

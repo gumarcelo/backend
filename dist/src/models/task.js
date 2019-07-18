@@ -32,8 +32,8 @@ module.exports = function (app) {
         console.log(idTask);
         if (req.body.title != idTask[0].title) {
           idTask[0].title = req.body.title;
-        } else if (req.body.desc != idTask[0].desc) {
-          idTask[0].desc = req.body.desc;
+        } else if (req.body.desc != idTask[0].description) {
+          idTask[0].description = req.body.description;
         } else if (req.body.dateLimit != idTask[0].dateLimit) {
           idTask[0].dateLimit = req.body.dateLimit;
         } else if (req.body.status != idTask[0].status) {

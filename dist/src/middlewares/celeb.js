@@ -49,5 +49,46 @@ module.exports = {
       email: _celebrate.Joi.string().email().required(),
       password: _celebrate.Joi.string().min(4).required()
     })
+  }),
+  //criação de tarefas
+  celebNewTask: (0, _celebrate.celebrate)({
+    headers: _celebrate.Joi.object({
+      authorization: _celebrate.Joi.string().required()
+    }).unknown(true),
+    body: _celebrate.Joi.object().keys({
+      title: _celebrate.Joi.string().min(2).required(),
+      description: _celebrate.Joi.string().required(),
+      dateLimit: _celebrate.Joi.string().required()
+    })
+  }),
+  //buscar uma ou todas as tarefas
+  celebGetTask: (0, _celebrate.celebrate)({
+    headers: _celebrate.Joi.object({
+      authorization: _celebrate.Joi.string().required()
+    }).unknown(true),
+    params: {
+      id: _celebrate.Joi.string().optional()
+    }
+  }),
+  //atualização de tarefa
+  celebUpdateTask: (0, _celebrate.celebrate)({
+    headers: _celebrate.Joi.object({
+      authorization: _celebrate.Joi.string().required()
+    }).unknown(true),
+    body: _celebrate.Joi.object().keys({
+      status: _celebrate.Joi.string().required(),
+      title: _celebrate.Joi.string().min(2).required(),
+      description: _celebrate.Joi.string().required(),
+      dateLimit: _celebrate.Joi.string().required()
+    })
+  }),
+  //deletar uma tarefa
+  celebDeleteTask: (0, _celebrate.celebrate)({
+    headers: _celebrate.Joi.object({
+      authorization: _celebrate.Joi.string().required()
+    }).unknown(true),
+    params: {
+      id: _celebrate.Joi.string().required()
+    }
   })
 };

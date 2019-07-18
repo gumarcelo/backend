@@ -48,4 +48,45 @@ module.exports = {
       password: Joi.string().min(4).required()
     })
   }),
+  //criação de tarefas
+  celebNewTask: celebrate({
+    headers: Joi.object({
+      authorization: Joi.string().required()
+    }).unknown(true),
+    body: Joi.object().keys({
+      title: Joi.string().min(2).required(),
+      description: Joi.string().required(),
+      dateLimit: Joi.string().required()
+    })
+  }),
+  //buscar uma ou todas as tarefas
+  celebGetTask: celebrate({
+    headers: Joi.object({
+      authorization: Joi.string().required()
+    }).unknown(true),
+    params: {
+      id: Joi.string().optional()
+    }
+  }),
+  //atualização de tarefa
+  celebUpdateTask: celebrate ({
+    headers: Joi.object({
+      authorization: Joi.string().required()
+    }).unknown(true),
+    body: Joi.object().keys({
+      status: Joi.string().required(),
+      title: Joi.string().min(2).required(),
+      description: Joi.string().required(),
+      dateLimit: Joi.string().required()
+    })
+  }),
+  //deletar uma tarefa
+  celebDeleteTask: celebrate ({
+    headers: Joi.object({
+      authorization: Joi.string().required()
+    }).unknown(true),
+    params: {
+      id: Joi.string().required()
+    }
+  })
 }

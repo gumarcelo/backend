@@ -28,7 +28,7 @@ module.exports = app =>{
       if (!req.params.id) {
         app.src.models.user.getAll(req, res)
       } else {
-        app.src.odels.user.getOne(req, res)
+        app.src.models.user.getOne(req, res)
       }
     },
     delete: (req, res) => { app.src.models.user.delete(req, res) },
@@ -55,12 +55,11 @@ module.exports = app =>{
     // verificação do token
     verificar: (req, res) => {
       if(!req.headers.authorization) {
-        console.log('Erro na verificação do token')
+        res.status(404).send('Usuario não encontrado.')
       }
       jwt.verify(req.headers.authorization, df.KEY, function(err, decoded){
         if (err) {
-          console.log('deu erro')
-          res.json(err)
+          res.status(500).send(err)
           return
         }
         res.status(200).send(decoded)

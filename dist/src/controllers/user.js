@@ -42,7 +42,7 @@ module.exports = function (app) {
       if (!req.params.id) {
         app.src.models.user.getAll(req, res);
       } else {
-        app.src.odels.user.getOne(req, res);
+        app.src.models.user.getOne(req, res);
       }
     },
     delete: function _delete(req, res) {
@@ -73,12 +73,11 @@ module.exports = function (app) {
     // verificação do token
     verificar: function verificar(req, res) {
       if (!req.headers.authorization) {
-        console.log('Erro na verificação do token');
+        res.status(404).send('Usuario não encontrado.');
       }
       _jsonwebtoken2.default.verify(req.headers.authorization, _define2.default.KEY, function (err, decoded) {
         if (err) {
-          console.log('deu erro');
-          res.json(err);
+          res.status(500).send(err);
           return;
         }
         res.status(200).send(decoded);

@@ -14,7 +14,7 @@ module.exports = function (app) {
           res.status(500).send(err);
           return;
         }
-        res.status(200).send('Registrado com sucesso');
+        res.status(201).send('Registrado com sucesso');
       });
     },
     update: function update(req, res) {
@@ -54,7 +54,6 @@ module.exports = function (app) {
         res.status(200).send('Usuario removido com sucesso.');
       });
     },
-    // login
     login: function login(req, cb) {
       _user2.default.findOne({ email: req.body.email }, function (err, data) {
         if (err) {

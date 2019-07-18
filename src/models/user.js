@@ -7,7 +7,7 @@ module.exports = app => {
           res.status(500).send(err)
           return
         }
-        res.status(200).send('Registrado com sucesso')
+        res.status(201).send('Registrado com sucesso')
       })
     },
     update: (req, res) => {
@@ -47,7 +47,6 @@ module.exports = app => {
         res.status(200).send('Usuario removido com sucesso.')
       })
     },
-    // login
     login: (req, cb) => {
       User.findOne({email: req.body.email},(err, data) => {
         if(err) {

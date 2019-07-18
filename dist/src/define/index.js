@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
   AppName: 'API Tasks',
-  AppPort: 4000,
+  AppPort: process.env.PORT || 4000,
   MongodbUrl: 'mongodb://felipe:felipe123@ds139909.mlab.com:39909/felipe',
   KEY: '%%gustavinhodelicinha%%'
 };
