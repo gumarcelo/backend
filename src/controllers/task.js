@@ -1,6 +1,7 @@
 module.exports = app => {
   return {
     save: (req, res, data) => {
+      console.log('entrei no controller')
       app.src.models.task.save(req, res, data)
     },
     update: (req, res, data) => {

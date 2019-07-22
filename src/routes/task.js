@@ -7,6 +7,7 @@ module.exports = app => {
    */
   app.post('/task', celebNewTask, (req, res) => {
     check(req, res, (data) =>{
+      console.log(req.headers.authorization)
       app.src.controllers.task.save(req, res, data)
     })
   })

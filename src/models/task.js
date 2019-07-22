@@ -3,10 +3,11 @@ module.exports = app => {
   return {
     save: (req, res, data) => {
       task.findById(data.id, (err, data) => {
-        if(err) {
-          res.status(400).send('id inválido')
-          return
-        }
+          if(err) {
+            res.status(400).send('id inválido')
+            return
+          }
+        console.log('entrei no models')
         data.tasks.push(req.body)
         data.save((err, data) => {
           res.json(data)
