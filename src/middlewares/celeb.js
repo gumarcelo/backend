@@ -78,7 +78,8 @@ module.exports = {
       status: Joi.string().required(),
       title: Joi.string().min(2).required(),
       description: Joi.string().required(),
-      dateLimit: Joi.string().required()
+      dateLimit: Joi.string().required(),
+      status: Joi.string().optional()
     }),
     params: {
       id: Joi.string().required()
