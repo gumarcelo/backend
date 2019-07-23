@@ -15,6 +15,7 @@ module.exports = app => {
       })
     },
     update: (req, res, data) => {
+      console.log('entrei no task models')
       task.findById(data.id, (err, data) => {
         if(err) {
           res.status(400).send('id inválido')
@@ -38,7 +39,10 @@ module.exports = app => {
         }
         console.log(idTask)
         data.save((err) => {
-          if (err) return res.status(400).send(`erro: ${err}`)
+          if (err) {
+            console.log('erro ao atualizar a tarefa')
+            return res.status(400).send(`erro: ${err}`)
+          }
           res.status(200).send('Salvo com sucesso')
         })
       })
