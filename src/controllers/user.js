@@ -46,10 +46,16 @@ module.exports = app =>{
           jwt.sign({ id: cb._id }, df.KEY, (err, token) => { //1param: payload, 2º chave criada, função para validar erro ou devolver a resposta pro usuario
             if (err) {
               console.log(err)
-              res.status(400).send('user controller jwt')
+              res.status(400).send('Erro com token')
               return
             }
-            res.json({token: token})
+            res.json({
+              user: {
+                name: cb.name,
+                email: cb.email
+              },
+              token: token
+            })
           })
         })
       })

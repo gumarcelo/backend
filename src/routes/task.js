@@ -1,13 +1,8 @@
 import check from '../middlewares/check'
 import { celebNewTask, celebGetTask, celebUpdateTask, celebDeleteTask } from '../middlewares/celeb'
 module.exports = app => {
-  /**
-   * ROUTE: /task
-   * PUBLIC: false
-   */
   app.post('/task', celebNewTask, (req, res) => {
     check(req, res, (data) =>{
-      console.log(req.headers.authorization)
       app.src.controllers.task.save(req, res, data)
     })
   })

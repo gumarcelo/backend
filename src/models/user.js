@@ -50,7 +50,7 @@ module.exports = app => {
     login: (req, cb) => {
       User.findOne({email: req.body.email},(err, data) => {
         if(err) {
-          cb(true, 404)
+          cb(true, 500)
           return
         }
         if(data === null) {

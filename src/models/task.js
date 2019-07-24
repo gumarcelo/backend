@@ -9,7 +9,7 @@ module.exports = app => {
           }
         data.tasks.push(req.body)
         data.save((err, data) => {
-          res.json(data)
+          res.json(data.tasks)
         })
       })
     },
@@ -22,26 +22,24 @@ module.exports = app => {
         const idTask = data.tasks.filter((obj) => {
           return obj._id == req.params.id
         })
-        console.log(idTask)
         if (req.body.title != idTask[0].title) {
           idTask[0].title = req.body.title
         }
-        else if (req.body.description != idTask[0].description) {
+        if (req.body.description != idTask[0].description) {
           idTask[0].description = req.body.description
         }
-        else if (req.body.dateLimit != idTask[0].dateLimit) {
+        if (req.body.dateLimit != idTask[0].dateLimit) {
           idTask[0].dateLimit = req.body.dateLimit
         }
-        else if (req.body.status != idTask[0].status) {
+        if (req.body.status != idTask[0].status) {
           idTask[0].status = req.body.status
         }
-        console.log(idTask)
-        data.save((err) => {
+        data.save((err, result) => {
           if (err) {
             console.log('erro ao atualizar a tarefa')
             return res.status(400).send(`erro: ${err}`)
           }
-          res.status(200).send('Salvo com sucesso')
+          res.status(200).send(result.tasks)
         })
       })
     },

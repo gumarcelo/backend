@@ -33,16 +33,14 @@ const User = new mongoose.Schema({
                 type: String
             },
             status: {
-                type: String,
-                enum: ['trash', 'done', 'open'],
-                default: 'open'
+                type: String
             },
             dateCreated: {
                 type: Date,
                 default: Date.now
             },
             dateLimit: {
-                type: Date
+                type: String
             }
         }
     ]

@@ -75,10 +75,10 @@ module.exports = {
       authorization: Joi.string().required()
     }).unknown(true),
     body: Joi.object().keys({
-      status: Joi.string().optional(),
       title: Joi.string().min(2).required(),
       description: Joi.string().required(),
-      dateLimit: Joi.string().required()
+      dateLimit: Joi.string().required(),
+      status: Joi.string().optional()
     }),
     params: {
       id: Joi.string().optional()
