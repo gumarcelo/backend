@@ -38,7 +38,8 @@ const User = new mongoose.Schema({
                 default: 'open'
             },
             dateCreated: {
-                type: Date
+                type: Date,
+                default: Date.now
             },
             dateLimit: {
                 type: Date

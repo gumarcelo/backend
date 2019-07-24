@@ -7,7 +7,6 @@ module.exports = app => {
             res.status(400).send('id inválido')
             return
           }
-        console.log('entrei no models')
         data.tasks.push(req.body)
         data.save((err, data) => {
           res.json(data)
@@ -15,7 +14,6 @@ module.exports = app => {
       })
     },
     update: (req, res, data) => {
-      console.log('entrei no task models')
       task.findById(data.id, (err, data) => {
         if(err) {
           res.status(400).send('id inválido')
@@ -28,7 +26,7 @@ module.exports = app => {
         if (req.body.title != idTask[0].title) {
           idTask[0].title = req.body.title
         }
-        else if (req.body.desc != idTask[0].description) {
+        else if (req.body.description != idTask[0].description) {
           idTask[0].description = req.body.description
         }
         else if (req.body.dateLimit != idTask[0].dateLimit) {
