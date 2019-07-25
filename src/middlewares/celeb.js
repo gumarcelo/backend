@@ -77,7 +77,7 @@ module.exports = {
     body: Joi.object().keys({
       title: Joi.string().min(2).required(),
       description: Joi.string().required(),
-      dateLimit: Joi.string().required(),
+      dateLimit: Joi.string().optional(),
       status: Joi.string().optional()
     }),
     params: {

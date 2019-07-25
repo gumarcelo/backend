@@ -33,7 +33,8 @@ const User = new mongoose.Schema({
                 type: String
             },
             status: {
-                type: String
+                type: String,
+                default: 'open'
             },
             dateCreated: {
                 type: Date,
